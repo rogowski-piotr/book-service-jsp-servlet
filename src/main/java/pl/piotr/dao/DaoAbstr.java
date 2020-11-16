@@ -21,6 +21,8 @@ public abstract class DaoAbstr <Key, Entity> {
 
     protected Statement dbStatement;
 
+    String QUERY_DELETE_BY_KATEGORIA;
+
     String QUERY_ALL;
 
     String QUERY_BY_ID;
@@ -90,6 +92,19 @@ public abstract class DaoAbstr <Key, Entity> {
             pstmt.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println(ex.getMessage());
+        }
+    }
+
+    public void delete(Key id) {
+        try {
+            connect();
+            dbStatement.executeQuery(QUERY_DELETE_BY_KATEGORIA + id);
+        } catch (ClassNotFoundException ex) {
+            System.err.println("ClassNotFoundException z init: " + ex.getMessage());
+        } catch (SQLException ex) {
+            System.err.println("SQLException z init: " + ex.getMessage());
+        } finally {
+            disconnect();
         }
     }
 

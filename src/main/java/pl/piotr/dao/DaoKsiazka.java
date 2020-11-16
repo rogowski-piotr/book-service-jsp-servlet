@@ -19,6 +19,7 @@ public class DaoKsiazka extends DaoAbstr<Integer, Ksiazka> {
         QUERY_ALL = "SELECT idk, tytul, idwyd, idkat FROM ksiazki.ksiazka";
         QUERY_BY_ID = "SELECT idk, tytul, idwyd, idkat FROM ksiazki.ksiazka WHERE idk=";
         QUERY_INSERT = "INSERT INTO ksiazki.ksiazka (idk, tytul, idwyd, idkat) VALUES(?,?,?,?)";
+        QUERY_DELETE_BY_KATEGORIA = "DELETE FROM ksiazki.ksiazka WHERE idk=";
         daoKategoria = new DaoKategoria();
         daoWydawnictwo = new DaoWydawnictwo();
     }

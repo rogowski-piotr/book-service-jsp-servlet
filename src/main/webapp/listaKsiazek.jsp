@@ -28,6 +28,7 @@
             <td>Tytul</td>
             <td>Wydawnictwo</td>
             <td>Kategoria</td>
+            <td>Usuń</td>
         </tr>
     </thead>
     <tbody id="tableBody">
@@ -38,6 +39,7 @@
                 <td><c:out value="${ksiazka.tytul}"/></td>
                 <td><c:out value="${ksiazka.wydawnictwo.nazwa}"/></td>
                 <td><c:out value="${ksiazka.kategoria.opis}"/></td>
+                <td><a href="listaKsiazek?id=<c:out value='${ksiazka.idk}'/>&delete=true">delete</a></td>
             </tr>
         </c:forEach>
     </tbody>

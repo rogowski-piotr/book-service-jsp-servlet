@@ -56,6 +56,7 @@ public class ServletKsiazka extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         boolean add = request.getParameterMap().containsKey("add") ? Boolean.valueOf(request.getParameter("add")) : false;
+        boolean delete = request.getParameterMap().containsKey("delete") ? Boolean.valueOf(request.getParameter("delete")) : false;
 
         if (add) {
             List<Wydawnictwo> listaWydawnictw = daoWydawnictwo.getAll();
@@ -67,6 +68,12 @@ public class ServletKsiazka extends HttpServlet {
             getServletContext()
                     .getRequestDispatcher("/addKsiazka.jsp")
                     .forward(request, response);
+        }
+
+        if (delete) {
+            Integer id = Integer.valueOf(request.getParameter("id"));
+            daoKsiazka.getById(id)
+                    .ifPresent(ksiazka -> daoKsiazka.delete(ksiazka.getIdk()));
         }
 
         List<Ksiazka> lista = daoKsiazka.getAll();
